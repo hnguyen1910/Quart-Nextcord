@@ -1,7 +1,7 @@
 from .base import DiscordModelsBase
 from quart import current_app
 
-import discord
+import nextcord as discord
 from .. import configs
 
 
