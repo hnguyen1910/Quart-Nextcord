@@ -1,5 +1,5 @@
 """
-Quart-Discord
+Quart-Nextcord
 -------------
 
 An Discord OAuth2 quart extension.
@@ -12,7 +12,7 @@ from setuptools import setup, find_packages
 
 
 def __get_version():
-    with open("quart_discord/__init__.py") as package_init_file:
+    with open("quart_nextcord/__init__.py") as package_init_file:
         return re.search(r'^__version__\s*=\s*[\'"]([^\'"]*)[\'"]', package_init_file.read(), re.MULTILINE).group(1)
 
 
@@ -39,7 +39,7 @@ extra_requirements = {
 
 
 setup(
-    name='Quart-Discord',
+    name='Quart-Nextcord',
     version=__get_version(),
     url='https://github.com/jnawk/Quart-Discord',
     license='MIT',
