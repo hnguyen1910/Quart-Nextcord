@@ -1,7 +1,7 @@
 import os
 
 from quart import Quart, redirect, url_for
-from quart_discord import DiscordOAuth2Session, requires_authorization
+from quart_nextcord import DiscordOAuth2Session, requires_authorization
 
 
 app = Quart(__name__)

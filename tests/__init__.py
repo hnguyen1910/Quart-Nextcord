@@ -1,7 +1,7 @@
 import os
 
 from quart import Quart
-from quart_discord import DiscordOAuth2Session
+from quart_nextcord import DiscordOAuth2Session
 
 
 def get_app():

@@ -1,8 +1,9 @@
-# Quart-Discord
+# Customized Quart-Nextcord
 [![PyPI](https://img.shields.io/pypi/v/Quart-Discord?style=for-the-badge)](https://pypi.org/project/Quart-Discord/) [![Read the Docs](https://img.shields.io/readthedocs/quart-discord?style=for-the-badge)](https://quart-discord.readthedocs.io/en/latest/) 
 
 Discord OAuth2 extension for Quart.
 
+THIS IS NOT ORIGINAL QUART-DIS/NEXTCORD (just a fork)
 
 ### Installation
 To install current latest release you can use following command:

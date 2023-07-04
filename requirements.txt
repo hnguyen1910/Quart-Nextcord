@@ -4,3 +4,5 @@ oauthlib
 cachetools
 setuptools
 Async-OAuthlib
+nextcord
+quart
