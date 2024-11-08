@@ -6,7 +6,6 @@ An Discord OAuth2 quart extension.
 """
 
 import re
-import os
 
 from setuptools import setup, find_packages
 
@@ -26,25 +25,13 @@ requirements = [
 ]
 
 
-on_rtd = os.getenv('READTHEDOCS') == 'True'
-if on_rtd:
-    requirements.append('sphinxcontrib-napoleon')
-    requirements.append('Pallets-Sphinx-Themes')
-
-extra_requirements = {
-    'docs': [
-        'sphinx==1.8.3'
-    ]
-}
-
-
 setup(
     name='Quart-Nextcord',
     version=__get_version(),
-    url='https://github.com/jnawk/Quart-Discord',
+    url='https://github.com/hnguyen1910/Quart-Nextcord',
     license='MIT',
-    author='Philip Dowie',
-    author_email='philip@jnawk.nz',
+    author='HNTin',
+    author_email='tin@ti.nz.eu.org',
     description='Discord OAuth2 extension for Quart.',
     long_description=__doc__,
     packages=find_packages(),
@@ -52,7 +39,6 @@ setup(
     include_package_data=True,
     platforms='any',
     install_requires=requirements,
-    extra_requirements=extra_requirements,
     classifiers=[
         'Environment :: Web Environment',
         'Intended Audience :: Developers',

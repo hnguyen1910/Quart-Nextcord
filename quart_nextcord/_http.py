@@ -26,11 +26,10 @@ class DiscordOAuth2HttpClient(abc.ABC):
         "DISCORD_OAUTH2_TOKEN",
     ]
 
-    def __init__(self, app, client_id=None, client_secret=None, redirect_uri=None, bot_token=None, users_cache=None,
+    def __init__(self, app, client_id=None, client_secret=None, bot_token=None, users_cache=None,
                  locks_cache=None):
         self.client_id = client_id or app.config["DISCORD_CLIENT_ID"]
         self.__client_secret = client_secret or app.config["DISCORD_CLIENT_SECRET"]
-        self.redirect_uri = redirect_uri or app.config["DISCORD_REDIRECT_URI"]
         self.__bot_token = bot_token or app.config.get("DISCORD_BOT_TOKEN", str())
         self.users_cache = cachetools.LFUCache(
             app.config.get("DISCORD_USERS_CACHE_MAX_LIMIT", configs.DISCORD_USERS_CACHE_DEFAULT_MAX_LIMIT)
@@ -39,8 +38,6 @@ class DiscordOAuth2HttpClient(abc.ABC):
         self.locksmith_lock = asyncio.Lock() if locks_cache is not None else None
         if not issubclass(self.users_cache.__class__, Mapping):
             raise ValueError("Instance users_cache must be a mapping like object.")
-        if "http://" in self.redirect_uri:
-            os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "true"
         app.discord = self
 
     @property
@@ -99,7 +96,7 @@ class DiscordOAuth2HttpClient(abc.ABC):
             token=token or await self.get_authorization_token(),
             state=state or session.get("DISCORD_OAUTH2_STATE"),
             scope=scope,
-            redirect_uri=self.redirect_uri,
+            redirect_uri=request.url.rpartition("/")[0] + "/callback/",
             auto_refresh_kwargs={
                 'client_id': self.client_id,
                 'client_secret': self.__client_secret,
